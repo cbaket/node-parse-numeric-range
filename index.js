@@ -38,8 +38,7 @@ module.exports.parse = function(str) {
   if(toFlatten.length === 0) return [];
   if(toFlatten.length === 1) {
     if(Array.isArray(toFlatten[0]))
-      return toFlatten[0];
-    return toFlatten;
+      toFlatten = toFlatten[0];
   }
 	
 	//concat arrays (there may be arrays inArray ( because of ranges like 8-14))
