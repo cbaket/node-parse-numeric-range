@@ -40,9 +40,9 @@ module.exports.parse = function(str) {
     if(Array.isArray(toFlatten[0]))
       toFlatten = toFlatten[0];
   }
+  if(toFlatten.length<=1)return toFlatten;
 	
-	//concat arrays (there may be arrays inArray ( because of ranges like 8-14))
-
+//concat arrays (there may be arrays inArray ( because of ranges, like 8-14))
   toFlatten = toFlatten.reduce(function(lhs, rhs) {
     if(!Array.isArray(lhs)) lhs = [lhs];
     if(!Array.isArray(rhs)) rhs = [rhs];
