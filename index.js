@@ -41,10 +41,20 @@ module.exports.parse = function(str) {
       return toFlatten[0];
     return toFlatten;
   }
+	
+	//concat arrays (there may be arrays inArray ( because of ranges like 8-14))
 
-  return toFlatten.reduce(function(lhs, rhs) {
+  toFlatten = toFlatten.reduce(function(lhs, rhs) {
     if(!Array.isArray(lhs)) lhs = [lhs];
     if(!Array.isArray(rhs)) rhs = [rhs];
     return lhs.concat(rhs);
   });
+  
+  //delete duplicates and negatives and sort ascending
+  return toFlatten.reduce(function(accum, current) {
+    if (current > 0 && accum.indexOf(current) < 0) {
+      accum.push(current);
+    }
+    return accum;
+  }, []).sort(function(a, b){return a-b});
 };
